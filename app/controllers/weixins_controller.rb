@@ -2,12 +2,11 @@ class WeixinsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   # before_filter :check_weixin_legality
   def show
-    render :text => params[:echostr]
+    array = ["kc_courses"].sort
+    render :text => "Forbidden", :status => 403 if params[:signature] != Digest::SHA1.hexdigest(array.join)
   end
 
   def create
-    array = [Rails.configuration.weixin_token,params[:timestamp],params[:nonce]].sort
-    render :text => "Forbidden", :status => 403 if params[:signature] != Digest::SHA1.hexdigest(array.join)
     if params[:xml][:MsgType] == "text"
       render "echo", :formats => :xml
     end
