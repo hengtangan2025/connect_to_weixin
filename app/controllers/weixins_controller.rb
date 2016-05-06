@@ -19,7 +19,8 @@ class WeixinsController < ApplicationController
     else
       render :text => params[:echostr]
     end
-    
+
+    p params[:xml]
     if params[:xml][:MsgType] == "text"
       render "echo", :formats => :xml
     end
