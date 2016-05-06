@@ -27,7 +27,7 @@ class WeixinsController < ApplicationController
         :FromUserName => params[:xml][:ToUserName] ,
         :CreateTime => Time.now.to_i,
         :MsgType => "text",
-        :Content => 大山的回声：params[:xml][:Content],
+        :Content => params[:xml][:Content],
         :FuncFlag => 0
       }
     end
