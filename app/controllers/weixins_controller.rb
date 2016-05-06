@@ -12,6 +12,14 @@ class WeixinsController < ApplicationController
   end
 
   def create
+    token = "kc_courses"
+    array = [token,params[:timestamp],params[:nonce]].sort
+    if params[:signature] != Digest::SHA1.hexdigest(array.join)
+      render :text => "Forbidden", :status => 403
+    else
+      render :text => params[:echostr]
+    end
+    
     if params[:xml][:MsgType] == "text"
       render "echo", :formats => :xml
     end
