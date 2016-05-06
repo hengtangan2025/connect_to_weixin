@@ -22,7 +22,7 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      render :xml => {
+      return :xml => {
         :ToUserNams => params[:xml][:FromUserName] ,
         :FromUserName => params[:xml][:ToUserName] ,
         :CreateTime => Time.now.to_i,
