@@ -22,15 +22,20 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      return :xml => {
-        :ToUserNams => params[:xml][:FromUserName] ,
-        :FromUserName => params[:xml][:ToUserName] ,
-        :CreateTime => Time.now.to_i,
-        :MsgType => "text",
-        :Content => params[:xml][:Content],
-        :FuncFlag => 0
-      }
+      render 'echo', :formats => :xml
+      # return :xml => {
+      #   :ToUserNams => params[:xml][:FromUserName] ,
+      #   :FromUserName => params[:xml][:ToUserName] ,
+      #   :CreateTime => Time.now.to_i,
+      #   :MsgType => "text",
+      #   :Content => params[:xml][:Content],
+      #   :FuncFlag => 0
+      # }
     end
+  end
+
+  def echo
+    
   end
 
   # private
