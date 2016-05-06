@@ -22,7 +22,7 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      render 'echo', :formats => :xml
+      render template: "weixins/echo.xml.erb"
       # return :xml => {
       #   :ToUserNams => params[:xml][:FromUserName] ,
       #   :FromUserName => params[:xml][:ToUserName] ,
