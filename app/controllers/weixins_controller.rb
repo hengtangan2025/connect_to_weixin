@@ -22,15 +22,12 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      render template: "weixins/echo.xml.erb"
-      # return :xml => {
-      #   :ToUserNams => params[:xml][:FromUserName] ,
-      #   :FromUserName => params[:xml][:ToUserName] ,
-      #   :CreateTime => Time.now.to_i,
-      #   :MsgType => "text",
-      #   :Content => params[:xml][:Content],
-      #   :FuncFlag => 0
-      # }
+      message = TextReplyMessage.new
+      message.FromUserName = params[:xml][:ToUserName]
+      message.ToUserName = params[:xml][:FromUserName]
+      message.Content =  params[:xml][:Content]
+      encrypt_message message.to_xml
+      p message
     end
   end
 
