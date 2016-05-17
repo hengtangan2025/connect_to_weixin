@@ -22,7 +22,7 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      p request.response
+      p request
       # xml_data = "<xml>
       # <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
       # <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
