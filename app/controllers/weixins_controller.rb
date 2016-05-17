@@ -22,12 +22,9 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      message = TextReplyMessage.new
-      message.FromUserName = params[:xml][:ToUserName]
-      message.ToUserName = params[:xml][:FromUserName]
-      message.Content =  params[:xml][:Content]
-      encrypt_message message.to_xml
-      p message
+      respond_to do |format|
+        format.xml {render xml: 'echo'}
+      end
     end
   end
 
