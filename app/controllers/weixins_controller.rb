@@ -22,17 +22,18 @@ class WeixinsController < ApplicationController
 
 
     if params[:xml][:MsgType] == "text"
-      xml_data = "<xml>
-      <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
-      <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
-      <CreateTime><%= Time.now.to_i %></CreateTime>
-      <MsgType><![CDATA[text]]></MsgType>
-      <Content><![CDATA[大山的回声：<%= params[:xml][:Content] %>]]></Content>
-      <FuncFlag>0</FuncFlag>
-      </xml>"
-      respond_to do |format|
-        format.xml {render xml: xml_data}
-      end
+      p request.response
+      # xml_data = "<xml>
+      # <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
+      # <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
+      # <CreateTime><%= Time.now.to_i %></CreateTime>
+      # <MsgType><![CDATA[text]]></MsgType>
+      # <Content><![CDATA[大山的回声：<%= params[:xml][:Content] %>]]></Content>
+      # <FuncFlag>0</FuncFlag>
+      # </xml>"
+      # respond_to do |format|
+      #   format.xml {render xml: xml_data}
+      # end
     end
   end
 
