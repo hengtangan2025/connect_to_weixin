@@ -15,14 +15,12 @@ class WeixinsController < ApplicationController
     array = [token,params[:timestamp],params[:nonce]].sort
     if params[:signature] != Digest::SHA1.hexdigest(array.join)
       render :text => "Forbidden", :status => 403
-    else
-      render :text => params[:echostr]
-    end
-
-
-    if params[:xml][:MsgType] == "text"
-      p params[:xml][:content]
-      render "echo", :formats => :xml
+    else 
+      if params[:xml][:MsgType] == "text"
+        p params[:xml][:Content]
+        render "echo", :formats => :xml
+        render :text => params[:echostr]
+     end
     end
   end
 
