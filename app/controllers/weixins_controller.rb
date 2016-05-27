@@ -30,7 +30,7 @@ class WeixinsController < ApplicationController
   end
 
   private
-    def check_weixin_lagality
+    def check_weixin_legality
       token = "kc_courses"
       array = [token,params[:timestamp],params[:nonce]].sort
       render :text => "Forbidden", :status => 403 if params[:signature] != Digest::SHA1.hexdigest(array.join)
