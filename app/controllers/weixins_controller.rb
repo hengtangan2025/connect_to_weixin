@@ -1,4 +1,5 @@
 class WeixinsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   def show
     token = "kc_courses"
     array = [token,params[:timestamp],params[:nonce]].sort
@@ -21,7 +22,7 @@ class WeixinsController < ApplicationController
 
     if params[:xml][:MsgType] == "text"
       p params[:xml][:content]
-      # render "echo", :formats => :xml
+      render "echo", :formats => :xml
     end
   end
 
