@@ -27,8 +27,8 @@ class WeixinsController < ApplicationController
       hash[:ToUserName] = params[:xml][:FromUserName]
       hash[:FromUserName] = params[:xml][:ToUserName] 
       hash[:CreateTime] = Time.now.to_i 
-      hash[:MsgType] = <![CDATA[text]]>
-      hash[:Content] = <![CDATA[ params[:xml][:Content] ]]>
+      hash[:MsgType] = params[:xml][:MsgType] 
+      hash[:Content] = params[:xml][:Content]
       render :xml =>{:result => hash.to_xml}
       # xml_data = "<xml>
       # <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
